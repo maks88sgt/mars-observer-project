@@ -5,6 +5,7 @@ import './App.css';
 import './i18n'
 import Header from "./header/Header";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import {Rovers} from "./rovers/rovers";
 
 function App() {
     return (
@@ -13,8 +14,7 @@ function App() {
                 <div className="App">
                     <Header/>
                     <Routes>
-                        <Route path="/about">
-                        </Route>
+                        <Route path="/rovers" element={<Rovers/>}/>
                         <Route path="/users">
                         </Route>
                         <Route path="/" element={<>
