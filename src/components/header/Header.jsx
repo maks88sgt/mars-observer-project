@@ -14,52 +14,34 @@ import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router-dom";
 
 const Header = () => {
-    const {t, i18n} = useTranslation('translation', { keyPrefix: 'Common' });
-    const pages = [t('Rovers'), t('Search'), t('About')];
-    const settings = [t('Profile'), t('Logout')];
+    const {t, i18n} = useTranslation('translation', {keyPrefix: 'Common'});
 
     const navigate = useNavigate();
 
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
+    const [userMenuIsOpen, setUserMenuIsOpen] = React.useState(null);
 
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Box sx={{flexGrow: 1, display: {xs: 'none', md: 'flex'}}}>
-                            <Button
-                                key={'rovers'}
-                                onClick={()=> navigate(`/rovers`)}
-                                sx={{my: 2, color: 'white', display: 'block'}}
-                            >
-                                {t('Rovers')}
-                            </Button>
+                        <Button
+                            key={'rovers'}
+                            onClick={() => navigate(`/rovers`)}
+                            sx={{my: 2, color: 'white', display: 'block'}}
+                        >
+                            {t('Rovers')}
+                        </Button>
                         <Button
                             key={'search'}
-                            onClick={()=> navigate(`/search`)}
+                            onClick={() => navigate(`/search`)}
                             sx={{my: 2, color: 'white', display: 'block'}}
                         >
                             {t('Search')}
                         </Button>
                         <Button
                             key={'about'}
-                            onClick={()=> navigate(`/about`)}
+                            onClick={() => navigate(`/about`)}
                             sx={{my: 2, color: 'white', display: 'block'}}
                         >
                             {t('About')}
@@ -68,14 +50,14 @@ const Header = () => {
 
                     <Box sx={{flexGrow: 0}}>
                         <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
+                            <IconButton onClick={()=> setUserMenuIsOpen(true)} sx={{p: 0}}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
                             </IconButton>
                         </Tooltip>
                         <Menu
                             sx={{mt: '45px'}}
                             id="menu-appbar"
-                            anchorEl={anchorElUser}
+                            anchorEl={userMenuIsOpen}
                             anchorOrigin={{
                                 vertical: 'top',
                                 horizontal: 'right',
@@ -85,14 +67,20 @@ const Header = () => {
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
+                            open={Boolean(userMenuIsOpen)}
                         >
-                            {settings.map((setting) => (
-                                <MenuItem key={setting} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
-                                </MenuItem>
-                            ))}
+                            <MenuItem key={'profile'} onClick={() => {
+                                setUserMenuIsOpen(null);
+                                navigate(`/profile`);
+                            }}>
+                                <Typography textAlign="center">{t('Profile')}</Typography>
+                            </MenuItem>
+                            <MenuItem key={'logout'} onClick={() => {
+                                setUserMenuIsOpen(null);
+                                navigate(`/login`);
+                            }}>
+                                <Typography textAlign="center">{t('Logout')}</Typography>
+                            </MenuItem>
                         </Menu>
                     </Box>
                     <Box sx={{flexGrow: 0}}>
