@@ -18,21 +18,58 @@ i18n
         resources: {
             en: {
                 translation: {
-                    "Rovers": "Rovers",
-                    "Search": "Search photo",
-                    "About": "About",
-                    "Profile": "Profile",
-                    "Logout": "Logout"
+                    "Common": {
+                        "Rovers": "Rovers",
+                        "Search": "Search photo",
+                        "About": "About",
+                        "Profile": "Profile",
+                        "Logout": "Logout",
+                    },
+                    "Rovers": {
+                        "Curiosity": {
+                            "Name": "Curiosity",
+                            "Description": "It's mission began in 2011 and continues now.",
+                            "Learn more": "Learn more"
+                        },
+                        "Opportunity": {
+                            "Name": "Opportunity",
+                            "Description": "This rover that was active from 2004 until 2018.",
+                            "Learn more": "Learn more"
+                        },
+                        "Spirit": {
+                            "Name": "Spirit",
+                            "Description": "It's mission lasted from 2004 to 2010",
+                            "Learn more": "Learn more"
+                        }
+                    }
                 }
             }, ru: {
                 translation: {
-                    "Rovers": "Марсоходы",
-                    "Search": "Поиск фото",
-                    "About": "О проекте",
-                    "Profile": "Профиль",
-                    "Logout": "Выйти"
+                    "Common": {
+                        "Rovers": "Марсоходы",
+                        "Search": "Поиск фото",
+                        "About": "О проекте",
+                        "Profile": "Профиль",
+                        "Logout": "Выйти"
+                    },
+                    "Rovers": {
+                        Curiosity: {
+                            Name: "Curiosity (Любопытство)",
+                            "Description": "Его миссия началась в 2011 и продолжается по сей день.",
+                            "Learn more": "Узнать больше"
+                        },
+                        "Opportunity": {
+                            "Name": "Opportunity (Возможность)",
+                            "Description": "Этот марсоход был активен с 2004 по 2018 год.",
+                            "Learn more": "Узнать больше"
+                        },
+                        "Spirit": {
+                            "Name": "Spirit (Дух)",
+                            "Description": "Его миссия продлилась с 2004 по 2010 год.",
+                            "Learn more": "Узнать больше"
+                        }
+                    }
                 }
-
             }
         }
     });

@@ -1,10 +1,9 @@
 import React from 'react';
 import {Box} from "@mui/material";
-import {OpportunityCard} from "./opportunity/opportunity-card";
-import {CuriosityCard} from "./curiosity/curiosity-card";
-import {SpiritCard} from "./spirit/spirit-card";
+import {RoverCard} from "./rover-card";
 
 export const Rovers = () => {
+    const roversList = ['Opportunity', 'Spirit', 'Curiosity']
     return (
         <>
             <Box
@@ -15,9 +14,7 @@ export const Rovers = () => {
                     justifyContent: 'space-around'
                 }}
             >
-                <OpportunityCard/>
-                <SpiritCard/>
-                <CuriosityCard/>
+                {roversList.map((rover) => <RoverCard roverName={rover}/>)}
             </Box>
         </>
     );

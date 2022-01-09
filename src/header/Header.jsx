@@ -14,7 +14,7 @@ import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router-dom";
 
 const Header = () => {
-    const {t, i18n} = useTranslation();
+    const {t, i18n} = useTranslation('translation', { keyPrefix: 'Common' });
     const pages = [t('Rovers'), t('Search'), t('About')];
     const settings = [t('Profile'), t('Logout')];
 
