@@ -18,19 +18,19 @@ i18n
         resources: {
             en: {
                 translation: {
-                    "Products": "Products",
-                    "Pricing": "Pricing",
-                    "Blog": "Blog",
+                    "Rovers": "Rovers",
+                    "Search": "Search photo",
+                    "About": "About",
                     "Profile": "Profile",
-                    "Account": "Account"
+                    "Logout": "Logout"
                 }
             }, ru: {
                 translation: {
-                    "Products": "Продукты",
-                    "Pricing": "Цены",
-                    "Blog": "Блог",
+                    "Rovers": "Марсоходы",
+                    "Search": "Поиск фото",
+                    "About": "О проекте",
                     "Profile": "Профиль",
-                    "Account": "Аккаунт"
+                    "Logout": "Выйти"
                 }
 
             }
