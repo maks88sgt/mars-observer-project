@@ -24,6 +24,7 @@ i18n
                         "About": "About",
                         "Profile": "Profile",
                         "Logout": "Logout",
+                        "Demo": "Demo mode"
                     },
                     "Rovers": {
                         "Curiosity": {
@@ -41,6 +42,18 @@ i18n
                             "Description": "It's mission lasted from 2004 to 2010",
                             "Learn more": "Learn more"
                         }
+                    },
+                    Login: {
+                        "Name": "Name",
+                        "ApiKey": "API key",
+                        "Save": "Save authorization data and use it in the future.",
+                        "Login": "Login",
+                        "ApiKey Info": "This application makes requests to NASA's open API during its operation. " +
+                            "To authorize users, a special key is required, which you can get at ",
+                        "DemoKey Info":
+                            "If for some reason you do not want to register, then you still can use this application, " +
+                            "however, the API has a limit on the number of requests and you can only make 25 requests from one IP " +
+                            "address per day. You can check the number of remaining requests on the profile page."
                     }
                 }
             }, ru: {
@@ -50,7 +63,8 @@ i18n
                         "Search": "Поиск фото",
                         "About": "О проекте",
                         "Profile": "Профиль",
-                        "Logout": "Выйти"
+                        "Logout": "Выйти",
+                        "Demo": "Демо режим"
                     },
                     "Rovers": {
                         Curiosity: {
@@ -68,6 +82,19 @@ i18n
                             "Description": "Его миссия продлилась с 2004 по 2010 год.",
                             "Learn more": "Узнать больше"
                         }
+                    },
+                    Login: {
+                        "Name": "Имя пользователя",
+                        "ApiKey": "API ключ",
+                        "Login": "Авторизоваться",
+                        "Save": "Сохранить авторизационные данные и использовать их в будущем.",
+                        "ApiKey Info": "Это приложение во время своей работы делает запросы к открытому АПИ НАСА. " +
+                            "Для авторизации пользователей используется специальный ключ, который вы можете получить " +
+                            "по адресу ",
+                        "DemoKey Info": "Если по какой-либо причине вы не хотите регистрироваться, " +
+                            "то вы сможете использовать данное приложение, однако, АПИ имеет ограничение по количеству запросов" +
+                            " и вы сможете сделать только 25 запросов с одного IP адреса в день. " +
+                            "Количество оставшихся запросов вы сможете проверить на странице профиля."
                     }
                 }
             }

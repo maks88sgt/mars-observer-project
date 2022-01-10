@@ -12,8 +12,12 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {useTranslation} from "react-i18next";
 import {useNavigate} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 const Header = () => {
+    const userName = useSelector((state) => state.auth.currentUserName);
+    const apiKey = useSelector((state) => state.auth.currentApiKey);
+
     const {t, i18n} = useTranslation('translation', {keyPrefix: 'Common'});
 
     const navigate = useNavigate();
@@ -47,11 +51,14 @@ const Header = () => {
                             {t('About')}
                         </Button>
                     </Box>
+                    <Box sx={{my: 2, mr: 2, color: 'white', display: 'block', fontSize: '16px'}}>
+                        {apiKey ? userName : t('Demo')}
+                    </Box>
 
                     <Box sx={{flexGrow: 0}}>
                         <Tooltip title="Open settings">
-                            <IconButton onClick={()=> setUserMenuIsOpen(true)} sx={{p: 0}}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                            <IconButton onClick={() => setUserMenuIsOpen(true)} sx={{p: 0}}>
+                                <Avatar alt={userName} src="/static/images/avatar/2.jpg"/>
                             </IconButton>
                         </Tooltip>
                         <Menu
