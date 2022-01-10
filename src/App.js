@@ -6,6 +6,7 @@ import {Rovers} from "./components/rovers/rovers";
 import {Login} from "./components/login/login";
 import {store} from "./state/store";
 import './i18n'
+import {Search} from "./components/search/search";
 
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
                     <Header/>
                     <Routes>
                         <Route path="/rovers" element={<Rovers/>}/>
-                        <Route path="/search"/>
+                        <Route path="/search" element={<Search/>}/>
                         <Route path="/about"/>
                         <Route path="/login" element={<Login/>}/>
                         <Route path="/profile"/>
