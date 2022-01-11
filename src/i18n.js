@@ -54,6 +54,21 @@ i18n
                             "If for some reason you do not want to register, then you still can use this application, " +
                             "however, the API has a limit on the number of requests and you can only make 25 requests from one IP " +
                             "address per day. You can check the number of remaining requests on the profile page."
+                    },
+                    "Search": {
+                        "End": "End date",
+                        "Start": "Start date",
+                        "Camera": "Camera",
+                        "Search": "Search",
+                        "FHAZ": "Front Hazard Avoidance Camera",
+                        "RHAZ": "Rear Hazard Avoidance Camera",
+                        "MAST": "Mast Camera",
+                        "CHEMCAM": "Chemistry and Camera Complex",
+                        "MAHLI": "Mars Hand Lens Imager",
+                        "MARDI": "Mars Descent Imager",
+                        "NAVCAM": "Navigation Camera",
+                        "PANCAM": "Panoramic Camera",
+                        "MINITES": "Miniature Thermal Emission Spectrometer (Mini-TES)"
                     }
                 }
             }, ru: {
@@ -68,7 +83,7 @@ i18n
                     },
                     "Rovers": {
                         Curiosity: {
-                            Name: "Curiosity (Любопытство)",
+                            'Name': "Curiosity (Любопытство)",
                             "Description": "Его миссия началась в 2011 году и продолжается по сей день.",
                             "Learn more": "Узнать больше"
                         },
@@ -83,7 +98,7 @@ i18n
                             "Learn more": "Узнать больше"
                         }
                     },
-                    Login: {
+                    "Login": {
                         "Name": "Имя пользователя",
                         "ApiKey": "API ключ",
                         "Login": "Авторизоваться",
@@ -95,6 +110,21 @@ i18n
                             "то вы сможете использовать данное приложение, однако, АПИ имеет ограничение по количеству запросов" +
                             " и вы сможете сделать только 25 запросов с одного IP адреса в день. " +
                             "Количество оставшихся запросов вы сможете проверить на странице профиля."
+                    },
+                    "Search": {
+                        "End": "Дата окончания",
+                        "Start": "Дата начала",
+                        "Camera": "Камера",
+                        "Search": "Поиск",
+                        "FHAZ": "Передняя камера для предотвращения опасных ситуаций",
+                        "RHAZ": "Задняя камера для предотвращения опасных ситуаций",
+                        "MAST": "Мачтовая камера",
+                        "CHEMCAM": "Химический и камерный комплекс",
+                        "MAHLI": "Тепловизор с ручным объективом ",
+                        "MARDI": "Опускаемый тепловизор",
+                        "NAVCAM": "Навигационная камера",
+                        "PANCAM": "Панорамная камера",
+                        "MINITES": "Миниатюрный термоэмиссионный спектрометр"
                     }
                 }
             }

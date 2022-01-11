@@ -2,11 +2,9 @@ export const AVAILABLE_ROVERS_CAMERAS = {
     "Opportunity": [
         'FHAZ',
         'RHAZ',
-        'MAST',
-        'CHEMCAM',
-        'MAHLI',
-        'MARDI',
         'NAVCAM',
+        'PANCAM',
+        'MINITES'
     ],
     "Spirit": [
         'FHAZ',
@@ -18,8 +16,10 @@ export const AVAILABLE_ROVERS_CAMERAS = {
     "Curiosity": [
         'FHAZ',
         'RHAZ',
+        'MAST',
+        'CHEMCAM',
+        'MAHLI',
+        'MARDI',
         'NAVCAM',
-        'PANCAM',
-        'MINITES'
     ]
 }
