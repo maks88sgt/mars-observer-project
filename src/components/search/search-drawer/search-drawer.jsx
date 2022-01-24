@@ -24,18 +24,15 @@ import ruLocale from "date-fns/locale/ru";
 import {useDispatch, useSelector} from "react-redux";
 import {currentCamera, currentRover, endDate, startDate} from "../../../state/slices/searchSlice";
 import {useGetRoverMetaInfoQuery} from "../../../state/api/roverApi";
+import {RoverMetaInfo} from "./rover-meta-info/rover-meta-info";
 
 export const SearchDrawer = ({isOpen, setIsOpen}) => {
     const dispatch = useDispatch();
     const rover = useSelector((state) => state.search.currentRover);
     const camera = useSelector((state) => state.search.currentCamera);
-    const start = useSelector((state) => state.search.start);
-    const end = useSelector((state) => state.search.end);
+    const start = useSelector((state) => state.search.startDate);
+    const end = useSelector((state) => state.search.endDate);
     const availableCameras = AVAILABLE_ROVERS_CAMERAS[rover];
-
-    const { data, error, isLoading } = useGetRoverMetaInfoQuery(rover);
-
-    console.log('>>>>>>>>>>', data);
 
     const {t, i18n} = useTranslation('translation', {keyPrefix: `Search`});
 
@@ -43,6 +40,8 @@ export const SearchDrawer = ({isOpen, setIsOpen}) => {
         en: enLocale,
         ru: ruLocale
     };
+
+    const {data, error, isLoading} = useGetRoverMetaInfoQuery(rover);
 
     return <Drawer
         sx={{
@@ -57,75 +56,76 @@ export const SearchDrawer = ({isOpen, setIsOpen}) => {
         anchor="left"
         open={isOpen}
     >
-        <Box sx={
-            {
-                display: 'flex',
-                justifyContent: "flex-end",
-                my: 1,
-                mr: 1
-            }
-        }>
-            <IconButton onClick={() => setIsOpen(false)} sx={{width: '40px'}}>
-                <FontAwesomeIcon icon={faChevronLeft}/>
-            </IconButton>
-        </Box>
-        <Box sx={
-            {
-                width: 4 / 5,
-                display: "flex",
-                flexDirection: 'row',
-                justifyContent: "space-around",
-                my: 1,
-                mx: 'auto'
-            }
-        }>
-            <ToggleButtonGroup
-                value={rover}
-                exclusive
-                onChange={(event, newRover) => {
-                    dispatch(currentRover(newRover))
-                }}
-                color="primary"
-                fullWidth
-            >
-                {AVAILABLE_ROVERS_LIST.map((roverName) => {
-                    return <ToggleButton key={roverName} value={roverName}>{roverName}</ToggleButton>
-                })}
-            </ToggleButtonGroup>
-        </Box>
-        <Box sx={
-            {
-                width: 4 / 5,
-                display: "flex",
-                justifyContent: "center",
-                my: 1,
-                mx: 'auto'
-            }
-        }>
-            <FormControl fullWidth>
-                <InputLabel id="camera-select-label">{t('Camera')}</InputLabel>
-                <Select
-                    labelId="camera-select-label"
-                    id="camera-select"
-                    value={camera}
-                    label={t('Camera')}
-                    onChange={(event) =>
-                        dispatch(currentCamera(event.target.value))}
+        <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[i18n.language]}>
+            <Box sx={
+                {
+                    display: 'flex',
+                    justifyContent: "flex-end",
+                    my: 1,
+                    mr: 1
+                }
+            }>
+                <IconButton onClick={() => setIsOpen(false)} sx={{width: '40px'}}>
+                    <FontAwesomeIcon icon={faChevronLeft}/>
+                </IconButton>
+            </Box>
+            <Box sx={
+                {
+                    width: 4 / 5,
+                    display: "flex",
+                    flexDirection: 'row',
+                    justifyContent: "space-around",
+                    my: 1,
+                    mx: 'auto'
+                }
+            }>
+                <ToggleButtonGroup
+                    value={rover}
+                    exclusive
+                    onChange={(event, newRover) => {
+                        dispatch(currentRover(newRover))
+                    }}
+                    color="primary"
+                    fullWidth
                 >
-                    {availableCameras.map((camera) => <MenuItem key={camera} value={camera}>{t(camera)}</MenuItem>)}
-                </Select>
-            </FormControl>
-        </Box>
-        <Box sx={
-            {
-                width: 4 / 5,
-                display: "flex",
-                justifyContent: "center",
-                my: 1,
-                mx: 'auto'
-            }
-        }>
-            <LocalizationProvider dateAdapter={AdapterDateFns} locale={localeMap[i18n.language]}>
+                    {AVAILABLE_ROVERS_LIST.map((roverName) => {
+                        return <ToggleButton key={roverName} value={roverName}>{roverName}</ToggleButton>
+                    })}
+                </ToggleButtonGroup>
+            </Box>
+            <Box sx={
+                {
+                    width: 4 / 5,
+                    display: "flex",
+                    justifyContent: "center",
+                    my: 1,
+                    mx: 'auto'
+                }
+            }>
+                <FormControl fullWidth>
+                    <InputLabel id="camera-select-label">{t('Camera')}</InputLabel>
+                    <Select
+                        labelId="camera-select-label"
+                        id="camera-select"
+                        value={camera}
+                        label={t('Camera')}
+                        onChange={(event) =>
+                            dispatch(currentCamera(event.target.value))}
+                    >
+                        {availableCameras.map((camera) => <MenuItem key={camera} value={camera}>{t(camera)}</MenuItem>)}
+                    </Select>
+                </FormControl>
+            </Box>
+            <Box sx={
+                {
+                    width: 4 / 5,
+                    display: "flex",
+                    justifyContent: "center",
+                    my: 1,
+                    mx: 'auto'
+                }
+            }>
+
                 <DatePicker
                     label={t('Start')}
                     value={start}
@@ -133,8 +133,9 @@ export const SearchDrawer = ({isOpen, setIsOpen}) => {
                         dispatch(startDate(newValue));
                     }}
                     renderInput={(params) => <TextField {...params} />}
-                    minDate={new Date('01/01/2004')}
-                    maxDate={new Date('01/01/2010')}
+                    minDate={new Date(data?.photo_manifest?.landing_date)}
+                    maxDate={new Date(data?.photo_manifest?.max_date)}
+                    openTo="year"
                 />
                 <DatePicker
                     label={t('End')}
@@ -143,23 +144,37 @@ export const SearchDrawer = ({isOpen, setIsOpen}) => {
                         dispatch(endDate(newValue));
                     }}
                     renderInput={(params) => <TextField {...params} />}
-                    minDate={new Date('01/01/2004')}
-                    maxDate={new Date('01/01/2010')}
+                    openTo="year"
+                    minDate={new Date(data?.photo_manifest?.landing_date)}
+                    maxDate={new Date(data?.photo_manifest?.max_date)}
                 />
-            </LocalizationProvider>
-        </Box>
-        <Box sx={
-            {
-                width: 4 / 5,
-                display: "flex",
-                justifyContent: "center",
-                my: 1,
-                mx: 'auto'
-            }
-        }>
-            <Button fullWidth variant="contained">
-                {(t('Search'))}
-            </Button>
-        </Box>
+
+            </Box>
+            <Box sx={
+                {
+                    width: 4 / 5,
+                    display: "flex",
+                    justifyContent: "center",
+                    my: 1,
+                    mx: 'auto'
+                }
+            }>
+                <Button fullWidth variant="contained">
+                    {(t('Search'))}
+                </Button>
+            </Box>
+            <Box sx={
+                {
+                    width: 4 / 5,
+                    display: "flex",
+                    justifyContent: "center",
+                    my: 1,
+                    mx: 'auto',
+                    textSizeAdjust: 'auto'
+                }
+            }>
+                <RoverMetaInfo data={data} error={error} isLoading={isLoading}/>
+            </Box>
+        </LocalizationProvider>
     </Drawer>
 }

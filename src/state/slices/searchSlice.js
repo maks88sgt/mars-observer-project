@@ -6,22 +6,7 @@ const initialState = {
     currentCamera: '',
     startDate: null,
     endDate: null,
-    metaInfo: {
-        launchDate: null,
-        landingDate: null,
-        status: null,
-        maxDate: null,
-        totalPhotos: null
-    }
 };
-
-const fetchRoverMetaInfo = createAsyncThunk(
-    'roverMetaInfo',
-    async (roverName, thunkAPI) => {
-        const response = await fetch(`https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity?api_key=DEMO_KEY`);
-        return response.json();
-    }
-)
 
 export const searchSlice = createSlice({
     name: 'search',
