@@ -1,13 +1,16 @@
 import {Table, TableBody, TableCell, TableRow, Typography} from "@mui/material";
+import {useTranslation} from "react-i18next";
 
 export const RoverMetaInfo = ({data, error, isLoading}) => {
 
+    const {t, i18n} = useTranslation('translation', {keyPrefix: 'Metainfo'});
+
     const rows = [
-        {field: 'Launch date from Earth: ', value: new Date(data?.photo_manifest?.launch_date).toLocaleDateString('ru-RU')},
-        {field: 'Landing on Mars: ', value: data?.photo_manifest?.landing_date},
-        {field: 'Maximum available date for photo: ', value: data?.photo_manifest?.max_date},
-        {field: 'Mission status: ', value: data?.photo_manifest?.status},
-        {field: 'Number of available photos: ', value: data?.photo_manifest?.total_photos},
+        {field: t("launch"), value: new Date(data?.photo_manifest?.launch_date).toLocaleDateString(i18n.language)},
+        {field: t("landing"), value: new Date(data?.photo_manifest?.landing_date).toLocaleDateString(i18n.language)},
+        {field: t("maxPhotoDate"), value: new Date(data?.photo_manifest?.max_date).toLocaleDateString(i18n.language)},
+        {field: t("status"), value: t(data?.photo_manifest?.status)},
+        {field: t("photosCount"), value: data?.photo_manifest?.total_photos},
     ];
 
     return (

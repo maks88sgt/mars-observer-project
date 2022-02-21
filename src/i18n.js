@@ -43,7 +43,7 @@ i18n
                             "Learn more": "Learn more"
                         }
                     },
-                    Login: {
+                    "Login": {
                         "Name": "Name",
                         "ApiKey": "API key",
                         "Save": "Save authorization data and use it in the future.",
@@ -69,6 +69,15 @@ i18n
                         "NAVCAM": "Navigation Camera",
                         "PANCAM": "Panoramic Camera",
                         "MINITES": "Miniature Thermal Emission Spectrometer (Mini-TES)"
+                    },
+                    "Metainfo": {
+                        "launch": 'Launch date from Earth: ',
+                        "landing": 'Landing on Mars: ',
+                        "maxPhotoDate": 'Maximum available date for photo: ',
+                        "status": 'Mission status: ',
+                        "photosCount": 'Number of available photos: ',
+                        "active": 'active',
+                        "complete": 'complete',
                     }
                 }
             }, ru: {
@@ -82,7 +91,7 @@ i18n
                         "Demo": "Демо режим"
                     },
                     "Rovers": {
-                        Curiosity: {
+                        "Curiosity": {
                             'Name': "Curiosity (Любопытство)",
                             "Description": "Его миссия началась в 2011 году и продолжается по сей день.",
                             "Learn more": "Узнать больше"
@@ -125,6 +134,15 @@ i18n
                         "NAVCAM": "Навигационная камера",
                         "PANCAM": "Панорамная камера",
                         "MINITES": "Миниатюрный термоэмиссионный спектрометр"
+                    },
+                    "Metainfo": {
+                        "launch": 'Дата запуска с Земли: ',
+                        "landing": 'Дата посадки на Марс: ',
+                        "maxPhotoDate": 'Дата последней доступной фотографии: ',
+                        "status": 'Статус миссии: ',
+                        "photosCount": 'Общее количество фотографий: ',
+                        "active": 'в процессе',
+                        "complete": 'завершена',
                     }
                 }
             }

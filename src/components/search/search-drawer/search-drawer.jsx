@@ -122,7 +122,8 @@ export const SearchDrawer = ({isOpen, setIsOpen}) => {
                     display: "flex",
                     justifyContent: "center",
                     my: 1,
-                    mx: 'auto'
+                    mx: 'auto',
+                    gap: '5px'
                 }
             }>
 
@@ -136,6 +137,7 @@ export const SearchDrawer = ({isOpen, setIsOpen}) => {
                     minDate={new Date(data?.photo_manifest?.landing_date)}
                     maxDate={new Date(data?.photo_manifest?.max_date)}
                     openTo="year"
+                    autoComplete='off'
                 />
                 <DatePicker
                     label={t('End')}
@@ -147,6 +149,7 @@ export const SearchDrawer = ({isOpen, setIsOpen}) => {
                     openTo="year"
                     minDate={new Date(data?.photo_manifest?.landing_date)}
                     maxDate={new Date(data?.photo_manifest?.max_date)}
+                    autoComplete='off'
                 />
 
             </Box>
@@ -159,7 +162,7 @@ export const SearchDrawer = ({isOpen, setIsOpen}) => {
                     mx: 'auto'
                 }
             }>
-                <Button fullWidth variant="contained">
+                <Button fullWidth variant="contained" disabled={!camera && !start && !end} onClick={()=> null}>
                     {(t('Search'))}
                 </Button>
             </Box>
