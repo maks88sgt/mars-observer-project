@@ -1,3 +1,3 @@
-export const Opportunity = ()=> {
-    return <></>;
-}
+export const Opportunity = () => {
+  return <></>;
+};
