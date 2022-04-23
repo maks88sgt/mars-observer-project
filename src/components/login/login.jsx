@@ -88,9 +88,10 @@ export const Login = () => {
         <Button
           variant="contained"
           onClick={() => {
-            if (apiKey) {
+            if (apiKey && apiKey.length === 40) {
               dispatch(currentUserName(userName));
               dispatch(currentApiKey(apiKey));
+              localStorage.setItem("apiKey", apiKey);
               navigate("/rovers");
             } else {
               setError(true);

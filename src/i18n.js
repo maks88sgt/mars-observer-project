@@ -57,8 +57,7 @@ i18n
               "address per day. You can check the number of remaining requests on the profile page.",
           },
           Search: {
-            End: "End date",
-            Start: "Start date",
+            Date: "Choose date",
             Camera: "Camera",
             Search: "Search",
             FHAZ: "Front Hazard Avoidance Camera",
@@ -126,8 +125,7 @@ i18n
               "Количество оставшихся запросов вы сможете проверить на странице профиля.",
           },
           Search: {
-            End: "Дата окончания",
-            Start: "Дата начала",
+            Date: "Выберете дату",
             Camera: "Камера",
             Search: "Поиск",
             FHAZ: "Передняя камера для предотвращения опасных ситуаций",

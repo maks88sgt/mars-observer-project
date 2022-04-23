@@ -3,9 +3,8 @@ import { AVAILABLE_ROVERS_LIST } from "../../constants/rovers";
 
 const initialState = {
   currentRover: AVAILABLE_ROVERS_LIST[0],
-  currentCamera: "",
-  startDate: null,
-  endDate: null,
+  currentCamera: null,
+  selectedDate: null,
 };
 
 export const searchSlice = createSlice({
@@ -18,16 +17,13 @@ export const searchSlice = createSlice({
     currentCamera: (state, action) => {
       state.currentCamera = action.payload;
     },
-    startDate: (state, action) => {
-      state.startDate = action.payload;
-    },
-    endDate: (state, action) => {
-      state.endDate = action.payload;
+    selectedDate: (state, action) => {
+      state.selectedDate = action.payload;
     },
   },
 });
 
-export const { currentRover, currentCamera, startDate, endDate } =
+export const { currentRover, currentCamera, selectedDate } =
   searchSlice.actions;
 
 export default searchSlice.reducer;

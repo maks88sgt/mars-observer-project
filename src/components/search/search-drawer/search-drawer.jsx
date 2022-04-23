@@ -25,18 +25,18 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   currentCamera,
   currentRover,
-  endDate,
-  startDate,
+  selectedDate,
 } from "../../../state/slices/searchSlice";
 import { useGetRoverMetaInfoQuery } from "../../../state/api/roverApi";
 import { RoverMetaInfo } from "./rover-meta-info/rover-meta-info";
+import { fetchPhotos } from "../../../state/slices/photosSlice";
+import { dateToApi } from "../../../utils/dateToApi";
 
 export const SearchDrawer = ({ isOpen, setIsOpen }) => {
   const dispatch = useDispatch();
   const rover = useSelector((state) => state.search.currentRover);
   const camera = useSelector((state) => state.search.currentCamera);
-  const start = useSelector((state) => state.search.startDate);
-  const end = useSelector((state) => state.search.endDate);
+  const date = useSelector((state) => state.search.selectedDate);
   const availableCameras = AVAILABLE_ROVERS_CAMERAS[rover];
 
   const { t, i18n } = useTranslation("translation", { keyPrefix: `Search` });
@@ -143,28 +143,17 @@ export const SearchDrawer = ({ isOpen, setIsOpen }) => {
           }}
         >
           <DatePicker
-            label={t("Start")}
-            value={start}
+            label={t("Date")}
+            value={date}
             onChange={(newValue) => {
-              dispatch(startDate(newValue));
+              dispatch(selectedDate(newValue));
             }}
             renderInput={(params) => <TextField {...params} />}
             minDate={new Date(data?.photo_manifest?.landing_date)}
             maxDate={new Date(data?.photo_manifest?.max_date)}
             openTo="year"
             autoComplete="off"
-          />
-          <DatePicker
-            label={t("End")}
-            value={end}
-            onChange={(newValue) => {
-              dispatch(endDate(newValue));
-            }}
-            renderInput={(params) => <TextField {...params} />}
-            openTo="year"
-            minDate={new Date(data?.photo_manifest?.landing_date)}
-            maxDate={new Date(data?.photo_manifest?.max_date)}
-            autoComplete="off"
+            sx={{ width: "100%" }}
           />
         </Box>
         <Box
@@ -179,8 +168,13 @@ export const SearchDrawer = ({ isOpen, setIsOpen }) => {
           <Button
             fullWidth
             variant="contained"
-            disabled={!camera && !start && !end}
-            onClick={() => null}
+            disabled={!camera || !date}
+            onClick={() => {
+              console.log(dateToApi(date));
+              dispatch(
+                fetchPhotos({ roverName: rover, date: dateToApi(date), camera })
+              );
+            }}
           >
             {t("Search")}
           </Button>
