@@ -3,13 +3,12 @@ import { getApiKey } from "../../utils/getApiKey";
 
 export const fetchPhotos = createAsyncThunk(
   "photos/fetchPhotos",
-  async ({ roverName, date, camera }) => {
+  async ({ roverName, date }) => {
     const response = await fetch(
       `https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName.toLowerCase()}/photos?earth_date=${date}&api_key=${getApiKey()}`
     );
     const data = await response.json();
-    console.log(data);
-    return data.photos.filter((item) => item.camera.name === camera);
+    return data.photos;
   }
 );
 

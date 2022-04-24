@@ -25,7 +25,7 @@ const Header = () => {
   const [userMenuIsOpen, setUserMenuIsOpen] = React.useState(null);
 
   return (
-    <AppBar position="static">
+    <AppBar position="sticky">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
