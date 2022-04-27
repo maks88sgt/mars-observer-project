@@ -3,15 +3,19 @@ import {
   Card,
   CardActions,
   CardContent,
+  Modal,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { WIKI_LINKS } from "../../constants/wikiLinks";
 
 export const RoverCard = ({ roverName }) => {
-  const { t } = useTranslation("translation", {
+  const [isOpen, setIsOpen] = useState(false);
+  const { t, i18n } = useTranslation("translation", {
     keyPrefix: `Rovers.${roverName}`,
   });
+
   return (
     <Card
       sx={{
@@ -24,6 +28,17 @@ export const RoverCard = ({ roverName }) => {
         justifyContent: "space-around",
       }}
     >
+      <Modal
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      >
+        <iframe
+          src={WIKI_LINKS[i18n.language][roverName.toLowerCase()]}
+          width={"80%"}
+          height={"80%"}
+        ></iframe>
+      </Modal>
       <CardContent
         sx={{
           display: "flex",
@@ -44,7 +59,14 @@ export const RoverCard = ({ roverName }) => {
         alt={`${roverName} photo`}
       />
       <CardActions>
-        <Button size="small">{t("Learn more")}</Button>
+        <Button
+          size="small"
+          onClick={() => {
+            setIsOpen(true);
+          }}
+        >
+          {t("Learn more")}
+        </Button>
       </CardActions>
     </Card>
   );
