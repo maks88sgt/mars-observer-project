@@ -31,6 +31,7 @@ import { useGetRoverMetaInfoQuery } from "../../../state/api/roverApi";
 import { RoverMetaInfo } from "./rover-meta-info/rover-meta-info";
 import { fetchPhotos } from "../../../state/slices/photosSlice";
 import { dateToApi } from "../../../utils/dateToApi";
+import { apiToDate } from "../../../utils/apiToDate";
 
 export const SearchDrawer = ({ isOpen, setIsOpen }) => {
   const dispatch = useDispatch();
@@ -144,9 +145,9 @@ export const SearchDrawer = ({ isOpen, setIsOpen }) => {
         >
           <DatePicker
             label={t("Date")}
-            value={date}
+            value={apiToDate(date)}
             onChange={(newValue) => {
-              dispatch(selectedDate(newValue));
+              dispatch(selectedDate(dateToApi(newValue)));
             }}
             renderInput={(params) => <TextField {...params} />}
             minDate={new Date(data?.photo_manifest?.landing_date)}
@@ -170,7 +171,6 @@ export const SearchDrawer = ({ isOpen, setIsOpen }) => {
             variant="contained"
             disabled={!camera || !date}
             onClick={() => {
-              console.log(dateToApi(date));
               dispatch(
                 fetchPhotos({ roverName: rover, date: dateToApi(date), camera })
               );

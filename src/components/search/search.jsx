@@ -4,7 +4,6 @@ import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import {
   Box,
   Button,
-  Container,
   IconButton,
   ImageList,
   ImageListItem,
@@ -61,63 +60,63 @@ export function Search() {
             width: drawerIsOpen ? 2 / 3 : 1,
             marginLeft: drawerIsOpen ? "33%" : 0,
             display: "flex",
-            flexDirection: "column",
+            flexDirection: "row",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           {photos.length ? (
-            <div>{`${photos.length} photos founded for current date`}</div>
-          ) : null}
-          {filteredPhotos.length ? (
             <div>
-              {`${filteredPhotos.length} photos founded for current camera`}
-            </div>
-          ) : null}
-          {filteredPhotos.length ? (
-            <div>
+              {`${photos.length} photos for current date / `}
+              {`${filteredPhotos.length} photos for current camera / `}
               {`${
                 displayedPhotos <= filteredPhotos.length
                   ? displayedPhotos
                   : filteredPhotos.length
               } displayed`}
             </div>
-          ) : null}
-          : "No photos for such parameters, create new or try another query"}
+          ) : (
+            <div>
+              No photos for such parameters, create new or try another query
+            </div>
+          )}
         </Box>
       </Box>
-      <Container>
-        <Box
-          sx={{
-            width: drawerIsOpen ? 2 / 3 : 1,
-            marginLeft: drawerIsOpen ? "33%" : 0,
-          }}
-        >
-          <ImageList sx={{ width: "100%", height: "100%" }} cols={3} gap={3}>
-            {filteredPhotos.slice(0, displayedPhotos).map((item, index) => (
-              <ImageListItem key={item.img_src}>
-                <img
-                  src={`${item.img_src}?height=300px&fit=crop&auto=format`}
-                  srcSet={`${item.img_src}?fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
-                  loading="lazy"
-                  onClick={() => {
-                    setModalIsOpen(true);
-                    setModalImageSrc(item.img_src);
-                  }}
-                />
-              </ImageListItem>
-            ))}
-          </ImageList>
-          {filteredPhotos.length && displayedPhotos < filteredPhotos.length ? (
-            <Button
-              onClick={() => setDisplayedPhotos(displayedPhotos + 9)}
-              variant={"contained"}
-            >
-              Show more
-            </Button>
-          ) : null}
-        </Box>
-      </Container>
+      <Box
+        sx={{
+          width: drawerIsOpen ? 2 / 3 : 1,
+          marginLeft: drawerIsOpen ? "33%" : 0,
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginBottom: "14px",
+        }}
+      >
+        <ImageList sx={{ width: "100%", height: "100%" }} cols={3} gap={3}>
+          {filteredPhotos.slice(0, displayedPhotos).map((item) => (
+            <ImageListItem key={item.img_src}>
+              <img
+                src={`${item.img_src}?height=300px&fit=crop&auto=format`}
+                srcSet={`${item.img_src}?fit=crop&auto=format&dpr=2 2x`}
+                alt={item.title}
+                loading="lazy"
+                onClick={() => {
+                  setModalIsOpen(true);
+                  setModalImageSrc(item.img_src);
+                }}
+              />
+            </ImageListItem>
+          ))}
+        </ImageList>
+        {filteredPhotos.length && displayedPhotos < filteredPhotos.length ? (
+          <Button
+            onClick={() => setDisplayedPhotos(displayedPhotos + 9)}
+            variant={"contained"}
+          >
+            Show more
+          </Button>
+        ) : null}
+      </Box>
     </>
   );
 }

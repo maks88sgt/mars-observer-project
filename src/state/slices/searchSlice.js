@@ -3,8 +3,8 @@ import { AVAILABLE_ROVERS_LIST } from "../../constants/rovers";
 
 const initialState = {
   currentRover: AVAILABLE_ROVERS_LIST[0],
-  currentCamera: null,
-  selectedDate: null,
+  currentCamera: "FHAZ",
+  selectedDate: "",
 };
 
 export const searchSlice = createSlice({
