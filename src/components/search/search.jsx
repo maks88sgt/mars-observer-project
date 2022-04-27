@@ -21,7 +21,9 @@ export function Search() {
   const [modalImageSrc, setModalImageSrc] = useState("");
   const photos = useSelector((state) => state.photos.photos);
   const camera = useSelector((state) => state.search.currentCamera);
-  const filteredPhotos = photos.filter((item) => item.camera.name === camera);
+  const filteredPhotos = photos
+    ? photos.filter((item) => item.camera.name === camera)
+    : [];
   const [displayedPhotos, setDisplayedPhotos] = useState(9);
 
   useEffect(() => {
@@ -68,7 +70,9 @@ export function Search() {
             justifyContent: "center",
           }}
         >
-          {photos.length ? (
+          {!photos ? (
+            t("First time")
+          ) : photos.length ? (
             <div>
               {t("All photos", { photosNumber: photos.length })}
               {t("Camera photos", { filteredPhotos: filteredPhotos.length })}

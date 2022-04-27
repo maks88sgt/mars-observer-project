@@ -50,7 +50,8 @@
       "Camera photos": "{{filteredPhotos}} photos for current camera / ",
       "Displayed photos": "{{displayedPhotos}} displayed",
       "No photos": "No photos for such parameters, create new or try another query",
-      "Load more": "Load more"
+      "Load more": "Load more",
+      "First time": "Create search query using left panel"
     },
     "Metainfo": {
       "launch": "Launch date from Earth: ",

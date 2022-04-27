@@ -13,7 +13,7 @@ export const fetchPhotos = createAsyncThunk(
 );
 
 const initialState = {
-  photos: [],
+  photos: null,
 };
 
 export const photosSlice = createSlice({
