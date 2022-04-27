@@ -11,8 +11,11 @@ import {
 } from "@mui/material";
 import { SearchDrawer } from "./search-drawer/search-drawer";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 export function Search() {
+  const { t } = useTranslation("translation", { keyPrefix: "Search" });
+
   const [drawerIsOpen, setDrawerIsOpen] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [modalImageSrc, setModalImageSrc] = useState("");
@@ -67,18 +70,17 @@ export function Search() {
         >
           {photos.length ? (
             <div>
-              {`${photos.length} photos for current date / `}
-              {`${filteredPhotos.length} photos for current camera / `}
-              {`${
-                displayedPhotos <= filteredPhotos.length
-                  ? displayedPhotos
-                  : filteredPhotos.length
-              } displayed`}
+              {t("All photos", { photosNumber: photos.length })}
+              {t("Camera photos", { filteredPhotos: filteredPhotos.length })}
+              {t("Displayed photos", {
+                displayedPhotos:
+                  displayedPhotos <= filteredPhotos.length
+                    ? displayedPhotos
+                    : filteredPhotos.length,
+              })}
             </div>
           ) : (
-            <div>
-              No photos for such parameters, create new or try another query
-            </div>
+            <div>{t("No photos", { photosNumber: photos.length })}</div>
           )}
         </Box>
       </Box>
@@ -113,7 +115,7 @@ export function Search() {
             onClick={() => setDisplayedPhotos(displayedPhotos + 9)}
             variant={"contained"}
           >
-            Show more
+            {t("Show more")}
           </Button>
         ) : null}
       </Box>
