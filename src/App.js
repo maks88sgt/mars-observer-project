@@ -4,9 +4,10 @@ import { Provider } from "react-redux";
 import Header from "./components/header/Header";
 import { Rovers } from "./components/rovers/rovers";
 import { Login } from "./components/login/login";
+import { Search } from "./components/search/search";
+import { About } from "./components/about/about";
 import { store } from "./state/store";
 import "./i18n";
-import { Search } from "./components/search/search";
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
             <Routes>
               <Route path="/rovers" element={<Rovers />} />
               <Route path="/search" element={<Search />} />
-              <Route path="/about" />
+              <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
               <Route path="/profile" />
               <Route path="*" element={<Navigate to="/rovers" />} />

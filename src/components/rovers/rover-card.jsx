@@ -47,7 +47,9 @@ export const RoverCard = ({ roverName }) => {
           justifyContent: "space-around",
         }}
       >
-        <Typography variant="h5">{t("Name")}</Typography>
+        <Typography variant="h5" textAlign={"center"}>
+          {t("Name")}
+        </Typography>
         <Typography variant="caption" textAlign={"center"}>
           {t("Description")}
         </Typography>
