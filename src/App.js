@@ -21,7 +21,6 @@ function App() {
               <Route path="/search" element={<Search />} />
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/profile" />
               <Route path="*" element={<Navigate to="/rovers" />} />
             </Routes>
           </div>

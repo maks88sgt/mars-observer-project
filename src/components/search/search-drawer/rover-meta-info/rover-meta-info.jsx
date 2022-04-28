@@ -6,9 +6,16 @@ import {
   Typography,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { setError } from "../../../../state/slices/photosSlice";
 
 export const RoverMetaInfo = ({ data, error, isLoading }) => {
+  const dispatch = useDispatch();
   const { t, i18n } = useTranslation("translation", { keyPrefix: "Metainfo" });
+
+  if (error) {
+    dispatch(setError(error));
+  }
 
   const rows = [
     {

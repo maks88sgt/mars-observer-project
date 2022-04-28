@@ -12,6 +12,7 @@ import {
 import { SearchDrawer } from "./search-drawer/search-drawer";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { Error } from "../error/error";
 
 export function Search() {
   const { t } = useTranslation("translation", { keyPrefix: "Search" });
@@ -21,6 +22,7 @@ export function Search() {
   const [modalImageSrc, setModalImageSrc] = useState("");
   const photos = useSelector((state) => state.photos.photos);
   const camera = useSelector((state) => state.search.currentCamera);
+  const error = useSelector((state) => state.photos.error);
   const filteredPhotos = photos
     ? photos.filter((item) => item.camera.name === camera)
     : [];
@@ -30,7 +32,9 @@ export function Search() {
     setDisplayedPhotos(9);
   }, [photos]);
 
-  return (
+  return error ? (
+    <Error error={error} />
+  ) : (
     <>
       <SearchDrawer setIsOpen={setDrawerIsOpen} isOpen={drawerIsOpen} />
       <Modal

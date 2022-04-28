@@ -67,6 +67,11 @@
       "Second": "This application allows you to search and view photos from NASA rovers at Mars. To create a search query, select the rover, the instrument from which we want to get the image and the date Photo. The appendix also provides background information about rovers.",
       "Third": "The following libraries and dependencies were used to create the project: React, redux-toolkit, Material UI, i18n. The main technical features of the project are support for two languages, lazy loading photos, the ability to authorize users and save data about users in the browser's local storage.",
       "Fourth": "Using the Electron library.js based on the application, a desktop application distribution for the Windows platform has been created."
+    },
+    "Error": {
+      "User message": "An error occurred when accessing the server, it looks like you are using the wrong key or the request limit has been exceeded.",
+      "Error code": "Server error code: {{code}}",
+      "Error message": "Server error message: {{message}}"
     }
   }
 }
