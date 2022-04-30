@@ -16,7 +16,7 @@ export const Rovers = () => {
         }}
       >
         {roversList.map((rover) => (
-          <RoverCard roverName={rover} />
+          <RoverCard roverName={rover} key={rover} />
         ))}
       </Box>
     </>

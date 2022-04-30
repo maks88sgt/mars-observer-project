@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -12,17 +13,30 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { currentApiKey, currentUserName } from "../../state/slices/authSlice";
 
 const Header = () => {
   const userName = useSelector((state) => state.auth.currentUserName);
   const apiKey = useSelector((state) => state.auth.currentApiKey);
+  const dispatch = useDispatch();
 
   const { t, i18n } = useTranslation("translation", { keyPrefix: "Common" });
 
   const navigate = useNavigate();
 
   const [userMenuIsOpen, setUserMenuIsOpen] = React.useState(null);
+
+  useEffect(() => {
+    if (!userName && !apiKey) {
+      const savedApiKey = localStorage.getItem("apiKey");
+      const savedUserName = localStorage.getItem("userName");
+      if (savedApiKey && savedUserName) {
+        dispatch(currentUserName(savedUserName));
+        dispatch(currentApiKey(savedApiKey));
+      }
+    }
+  }, []);
 
   return (
     <AppBar position="sticky">
@@ -85,18 +99,13 @@ const Header = () => {
               open={Boolean(userMenuIsOpen)}
             >
               <MenuItem
-                key={"profile"}
-                onClick={() => {
-                  setUserMenuIsOpen(null);
-                  navigate(`/profile`);
-                }}
-              >
-                <Typography textAlign="center">{t("Profile")}</Typography>
-              </MenuItem>
-              <MenuItem
                 key={"logout"}
                 onClick={() => {
                   setUserMenuIsOpen(null);
+                  localStorage.removeItem("apiKey");
+                  localStorage.removeItem("userName");
+                  dispatch(currentUserName(null));
+                  dispatch(currentApiKey(null));
                   navigate(`/login`);
                 }}
               >

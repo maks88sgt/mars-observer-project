@@ -20,6 +20,7 @@ export const Login = () => {
   const [userName, setUserName] = useState("");
   const [apiKey, setApiKey] = useState("");
   const [error, setError] = useState(false);
+  const [saveUserData, setSaveUserData] = useState(true);
 
   return (
     <Container
@@ -81,7 +82,12 @@ export const Login = () => {
           sx={{ width: 1 }}
         />
         <FormControlLabel
-          control={<Checkbox defaultChecked />}
+          control={
+            <Checkbox
+              checked={saveUserData}
+              onClick={() => setSaveUserData(!saveUserData)}
+            />
+          }
           label={<Typography variant="caption">{t("Save")}</Typography>}
         />
 
@@ -91,7 +97,10 @@ export const Login = () => {
             if (apiKey && apiKey.length === 40) {
               dispatch(currentUserName(userName));
               dispatch(currentApiKey(apiKey));
-              localStorage.setItem("apiKey", apiKey);
+              if (saveUserData) {
+                localStorage.setItem("apiKey", apiKey);
+                localStorage.setItem("userName", userName);
+              }
               navigate("/rovers");
             } else {
               setError(true);
