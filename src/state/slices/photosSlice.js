@@ -7,7 +7,7 @@ export const fetchPhotos = createAsyncThunk(
     const response = await fetch(
       `https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName.toLowerCase()}/photos?earth_date=${date}&api_key=${getApiKey()}`
     );
-    if (response.statusCode === 200) {
+    if (response.status === 200) {
       const data = await response.json();
       return data.photos;
     } else {

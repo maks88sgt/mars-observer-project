@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import Header from "./components/header/Header";
 import { Rovers } from "./components/rovers/rovers";
@@ -11,7 +11,7 @@ import "./i18n";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <Suspense fallback="loading">
           <div className="App">
@@ -26,7 +26,7 @@ function App() {
           </div>
         </Suspense>
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
