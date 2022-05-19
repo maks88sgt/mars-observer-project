@@ -1,19 +1,44 @@
-name: learn-github-actions
-on: [ push ]
 jobs:
-  build-and-deploy:
+  build:
+    name: Build
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2.3.1
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      - name: Install and Build
-        run: |
-          npm install
-          npm run-script build
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.5
+      - name: Install Node.js
+        uses: actions/setup-node@v1
         with:
-          branch: gh-pages
-          folder: dist
+          node-version: 14.x
+
+      - name: Install NPM packages
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Upload production-ready build files
+        uses: actions/upload-artifact@v2
+        with:
+          name: production-files
+          path: ./build
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: production-files
+          path: ./build
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
