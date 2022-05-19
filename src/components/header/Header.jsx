@@ -36,7 +36,7 @@ const Header = () => {
         dispatch(currentApiKey(savedApiKey));
       }
     }
-  }, []);
+  }, [apiKey, dispatch, userName]);
 
   return (
     <AppBar position="sticky">
