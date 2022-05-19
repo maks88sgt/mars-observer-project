@@ -5,7 +5,7 @@
   "main": "./public/electron.js",
   "author": "Maksim Drobyshev",
   "description": "An application for searching and viewing photos from NASA rovers",
-  "homepage": "./",
+  "homepage": "http://maks88sgt.github.io/mars-observer-project",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
