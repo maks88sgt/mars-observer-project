@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/mars-observer-project/static/css/main.e6c13ad2.css",
-    "main.js": "/mars-observer-project/static/js/main.ccf8dc17.js",
+    "main.js": "/mars-observer-project/static/js/main.eb131740.js",
     "static/media/Curiosity.jpg": "/mars-observer-project/static/media/Curiosity.b654318f415db08be03b.jpg",
     "static/media/Opportunity.jpg": "/mars-observer-project/static/media/Opportunity.daeb4d30da3ccfdcd9c8.jpg",
     "static/media/Spirit.jpg": "/mars-observer-project/static/media/Spirit.1b51fb1222c65eb559bf.jpg",
     "index.html": "/mars-observer-project/index.html",
     "main.e6c13ad2.css.map": "/mars-observer-project/static/css/main.e6c13ad2.css.map",
-    "main.ccf8dc17.js.map": "/mars-observer-project/static/js/main.ccf8dc17.js.map"
+    "main.eb131740.js.map": "/mars-observer-project/static/js/main.eb131740.js.map"
   },
   "entrypoints": [
     "static/css/main.e6c13ad2.css",
-    "static/js/main.ccf8dc17.js"
+    "static/js/main.eb131740.js"
   ]
 }
