@@ -13,6 +13,7 @@ export const Rovers = () => {
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "space-around",
+          backgroundColor: "red"
         }}
       >
         {roversList.map((rover) => (
