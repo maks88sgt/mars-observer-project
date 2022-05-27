@@ -34,6 +34,7 @@ export const RoverCard = ({ roverName }) => {
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
         <iframe
+          title={roverName.toLowerCase()}
           src={WIKI_LINKS[i18n.language][roverName.toLowerCase()]}
           width={"80%"}
           height={"80%"}
@@ -58,7 +59,7 @@ export const RoverCard = ({ roverName }) => {
         src={require(`../../assets/${roverName}.jpg`)}
         width="200"
         height="200"
-        alt={`${roverName} photo`}
+        alt={`${roverName}`}
       />
       <CardActions>
         <Button

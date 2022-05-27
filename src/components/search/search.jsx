@@ -47,7 +47,7 @@ export function Search() {
           justifyContent: "center",
         }}
       >
-        <img src={modalImageSrc} alt={"photo"} height={"90%"} />
+        <img src={modalImageSrc} alt={"from Mars"} height={"90%"} />
       </Modal>
       <Box
         sx={{
