@@ -106,8 +106,8 @@ export function Search() {
           {filteredPhotos.slice(0, displayedPhotos).map((item) => (
             <ImageListItem key={item.img_src}>
               <img
-                src={`${item.img_src}?height=300px&fit=crop&auto=format`}
-                srcSet={`${item.img_src}?fit=crop&auto=format&dpr=2 2x`}
+                src={`https${item.img_src.slice(item.img_src.indexOf(":"))}?height=300px&fit=crop&auto=format`}
+                srcSet={`https${item.img_src.slice(item.img_src.indexOf(":"))}?fit=crop&auto=format&dpr=2 2x`}
                 alt={item.title}
                 loading="lazy"
                 onClick={() => {
