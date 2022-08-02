@@ -123,7 +123,7 @@ export function Search() {
             onClick={() => setDisplayedPhotos(displayedPhotos + 9)}
             variant={"contained"}
           >
-            {t("Show more")}
+            {t("Load more")}
           </Button>
         ) : null}
       </Box>
