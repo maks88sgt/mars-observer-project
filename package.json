@@ -2,7 +2,7 @@
   "name": "mars-observer-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://maks88sgt.github.io/",
+  "homepage": "https://maks88sgt.github.io/mars-observer-project",
   "dependencies": {
     "@emotion/react": "^11.7.1",
     "@emotion/styled": "^11.6.0",
