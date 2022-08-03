@@ -1,24 +1,17 @@
 import React, { Suspense } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Provider } from "react-redux";
 import Header from "./components/header/Header";
-import { store } from "./state/store";
-import "./i18n";
 import { Rovers } from "./components/rovers/rovers";
+import { Login } from "./components/login/login";
 import { Search } from "./components/search/search";
 import { About } from "./components/about/about";
-import { Login } from "./components/login/login";
-import * as PropTypes from "prop-types";
-
-function Navigate(props) {
-  return null;
-}
-
-Navigate.propTypes = { to: PropTypes.string };
+import { store } from "./state/store";
+import "./i18n";
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <Suspense fallback="loading">
           <div className="App">
@@ -33,7 +26,7 @@ function App() {
           </div>
         </Suspense>
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

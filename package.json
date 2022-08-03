@@ -2,6 +2,9 @@
   "name": "mars-observer-project",
   "version": "0.1.0",
   "private": true,
+  "main": "./public/electron.js",
+  "author": "Maksim Drobyshev",
+  "description": "An application for searching and viewing photos from NASA rovers",
   "homepage": "http://maks88sgt.github.io/mars-observer-project",
   "dependencies": {
     "@emotion/react": "^11.7.1",
@@ -46,7 +49,7 @@
       "max-len": [
         "warn",
         {
-          "code": 150
+          "code": 80
         }
       ]
     },
@@ -57,14 +60,10 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 1 electron version"
     ],
     "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 electron version"
     ]
   },
   "devDependencies": {
